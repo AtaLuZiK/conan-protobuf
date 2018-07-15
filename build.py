@@ -9,7 +9,7 @@ if __name__ == "__main__":
     extend_settings = []
     for settings in builder.items:
         settings = copy.deepcopy(settings)
-        settings.options["protobuf:lite"] = False
+        settings.options["protobuf:unicode"] = True
         extend_settings.append(settings)
     builder.items.extend(extend_settings)
 
