@@ -7,7 +7,7 @@ from conans import CMake, ConanFile, tools
 class ProtobufConan(ConanFile):
     name = "protobuf"
     version = "3.5.1"
-    license = "https://raw.githubusercontent.com/google/protobuf/master/LICENSE"
+    license = "MIT"
     url = "https://github.com/AtaLuZiK/conan-protobuf"
     description = "Protocol Buffers - Google's data interchange format"
     settings = "os", "compiler", "build_type", "arch"
