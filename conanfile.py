@@ -21,6 +21,7 @@ class ProtobufConan(ConanFile):
         "with_zlib=True",
         "unicode=False",
     )
+    exports_sources = "protobuf-config.cmake"
     generators = "cmake"
     requires = "zlib/1.2.8@conan/stable"
 
@@ -68,7 +69,7 @@ conan_basic_setup()''')
             self.copy("*.a", dst="lib", src="lib")
         self.copy("*.h", dst="include", src="include")
         self.copy("*.proto", dst="include", src="include")
-        self.copy("*", dst="cmake", src="cmake")
+        self.copy("protobuf-config.cmake", "cmake", ".")
 
     def package_info(self):
         self.cpp_info.libs = ["protobuf"]
