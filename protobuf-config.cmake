@@ -6,18 +6,24 @@ find_program(PROTOC_EXECUTABLE NAMES protoc PATHS ${CONAN_BIN_DIRS_PROTOBUF})
 
 # Create imported target protobuf::libprotobuf-lite
 add_library(protobuf::libprotobuf-lite INTERFACE IMPORTED)
-target_include_directories(protobuf::libprotobuf-lite INTERFACE ${PROTOBUF_INCLUDE_DIR})
-target_link_libraries(protobuf::libprotobuf-lite INTERFACE ${PROTOBUF_LITE_LIBRARY})
+set_target_properties(protobuf::libprotobuf-lite PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES ${PROTOBUF_INCLUDE_DIR}
+  INTERFACE_LINK_LIBRARIES ${PROTOBUF_LITE_LIBRARY}
+)
 
 # Create imported target protobuf::libprotobuf
 add_library(protobuf::libprotobuf INTERFACE IMPORTED)
-target_include_directories(protobuf::libprotobuf INTERFACE ${PROTOBUF_INCLUDE_DIR})
-target_link_libraries(protobuf::libprotobuf INTERFACE ${PROTOBUF_LIBRARY} "ZLIB::ZLIB")
+set_target_properties(protobuf::libprotobuf PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES ${PROTOBUF_INCLUDE_DIR}
+  INTERFACE_LINK_LIBRARIES ${PROTOBUF_LIBRARY} "ZLIB::ZLIB"
+)
 
 # Create imported target protobuf::libprotoc
 add_library(protobuf::libprotoc INTERFACE IMPORTED)
-target_include_directories(protobuf::libprotobuf INTERFACE ${PROTOBUF_INCLUDE_DIR})
-target_link_libraries(protobuf::libprotobuf INTERFACE ${PROTOC_LIBRARY} "protobuf::libprotobuf")
+set_target_properties(protobuf::libprotoc PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES ${PROTOBUF_INCLUDE_DIR}
+  INTERFACE_LINK_LIBRARIES ${PROTOC_LIBRARY} "protobuf::libprotobuf"
+)
 
 # Create imported target protobuf::protoc
 add_executable(protobuf::protoc IMPORTED)
