@@ -4,10 +4,6 @@ find_library(PROTOBUF_LIBRARY NAMES libprotobuf PATHS ${CONAN_LIB_DIRS_PROTOBUF}
 find_library(PROTOC_LIBRARY NAMES libprotoc PATHS ${CONAN_LIB_DIRS_PROTOBUF})
 find_program(PROTOC_EXECUTABLE NAMES protoc PATHS ${CONAN_BIN_DIRS_PROTOBUF})
 
-add_library(amqpcpp INTERFACE IMPORTED)
-target_include_directories(amqpcpp INTERFACE ${AMQPCPP_INCLUDE_DIR})
-target_link_libraries(amqpcpp INTERFACE ${AMQPCPP_LIBRARY})
-
 # Create imported target protobuf::libprotobuf-lite
 add_library(protobuf::libprotobuf-lite INTERFACE IMPORTED)
 target_include_directories(protobuf::libprotobuf-lite INTERFACE ${PROTOBUF_INCLUDE_DIR})
